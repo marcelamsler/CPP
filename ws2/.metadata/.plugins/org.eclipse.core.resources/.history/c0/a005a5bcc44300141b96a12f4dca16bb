@@ -1,0 +1,12 @@
+#include "charc.h"
+#include <ostream>
+
+int main () {
+	CharCounter counter{std::cout, std::cin};
+	counter.countNonWhiteSpaceChar();
+
+}
+
+
+
+

@@ -1,0 +1,14 @@
+#include <iterator>
+#include <algorithm>
+
+int chcount (std::istream &in) {
+
+	using input = std::istream_iterator<char>;
+	input eof{};
+	input ini{std::cin};
+	int size = std::distance(in,eof);
+	return size;
+
+}
+
+

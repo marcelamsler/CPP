@@ -1,0 +1,10 @@
+#include <iostream>
+#include "chcount.h"
+
+int main(){
+	std::cout << countn(std::cin);
+
+}
+
+
+

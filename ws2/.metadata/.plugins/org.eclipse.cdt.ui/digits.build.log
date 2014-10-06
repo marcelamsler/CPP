@@ -1,0 +1,17 @@
+10:43:04 **** Build of configuration Debug for project digits ****
+make all 
+Building file: ../7digit.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"7digit.d" -MT"7digit.d" -o "7digit.o" "../7digit.cpp"
+Finished building: ../7digit.cpp
+ 
+Building target: libdigits.so
+Invoking: GCC C++ Linker
+g++ -shared -o "libdigits.so"  ./7digit.o   
+/usr/bin/ld: ./7digit.o: relocation R_X86_64_32 against `.rodata' can not be used when making a shared object; recompile with -fPIC
+./7digit.o: error adding symbols: Bad value
+collect2: error: ld returned 1 exit status
+make: *** [libdigits.so] Error 1
+
+10:43:06 Build Finished (took 2s.451ms)
+

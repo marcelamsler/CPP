@@ -1,0 +1,11 @@
+#include <iterator>
+#include <algorithm>
+
+int chcount (std::istream &in) {
+
+	int size = std::distance(std::istream_iterator<char>{in}, std::istream_iterator<char>{});
+	return size;
+
+}
+
+

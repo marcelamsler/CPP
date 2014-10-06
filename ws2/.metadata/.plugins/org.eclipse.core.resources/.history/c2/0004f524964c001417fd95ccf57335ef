@@ -1,0 +1,7 @@
+#include <iostream>
+#include "7digit.h"
+int main(){
+
+	printMultipleLargeDigits(59,1,std::cout);
+
+}

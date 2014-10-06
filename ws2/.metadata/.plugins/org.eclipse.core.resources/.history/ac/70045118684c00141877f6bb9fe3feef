@@ -1,0 +1,6 @@
+#include "7digit.h"
+#include <iostream>
+
+int main() {
+	printLargeDigit(5, std::cout);
+}

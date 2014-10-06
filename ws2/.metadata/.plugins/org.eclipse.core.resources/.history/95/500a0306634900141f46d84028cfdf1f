@@ -1,0 +1,27 @@
+#include <iterator>
+#include <algorithm>
+#include <string>
+
+int chcount (std::istream &in) {
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, '*');
+
+}
+
+int wcount (std::istream &in) {
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, ' ');
+
+}
+
+int acount (std::istream &in) {
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, 'a');
+
+}
+
+int countn (std::istream &in) {
+
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, '\n');
+
+}
+
+
+

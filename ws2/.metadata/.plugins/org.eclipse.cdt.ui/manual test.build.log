@@ -1,0 +1,15 @@
+11:27:35 **** Incremental Build of configuration Debug for project manual test ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+Finished building: ../main.cpp
+ 
+Building target: manual test
+Invoking: GCC C++ Linker
+g++  -o "manual test"  ./7digit.o ./main.o   
+Finished building target: manual test
+ 
+
+11:27:36 Build Finished (took 591ms)
+

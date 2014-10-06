@@ -1,0 +1,48 @@
+#include "charc.h"
+#include <string>
+
+
+int CharCounter::countNonWhiteSpaceChar() const{
+	int length{-1};
+	char c{};
+	while(CharCounter::instream.good()) {
+		CharCounter::instream >> c;
+		length++;
+	}
+
+	return length;
+}
+
+int CharCounter::CountAllChars() const {
+	std::string line{};
+	std::getline(CharCounter::instream, line);
+	return line.length();
+
+}
+
+int CharCounter::countWords() const {
+	int length{-1};
+	std::string word{};
+	while(CharCounter::instream.good()) {
+			CharCounter::instream >> word;
+			length++;
+	}
+
+	return length;
+}
+
+int CharCounter::countLines() const {
+
+	int length{-1};
+	std::string line{};
+	while(CharCounter::instream.good()) {
+		std:getline(CharCounter::instream, line);
+		length++;
+	}
+
+	return length;
+
+}
+
+
+

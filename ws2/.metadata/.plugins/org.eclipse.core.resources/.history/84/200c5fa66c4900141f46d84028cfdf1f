@@ -1,0 +1,57 @@
+#include <iterator>
+#include <algorithm>
+#include <string>
+
+int chcount (std::istream &in) {
+	int size{0};
+	std::istreambuf_iterator<char> it{in};
+
+	while(it != std::istreambuf_iterator<char>{}) {
+		it++;
+		size++;
+	}
+	return size;
+
+}
+
+int wcount (std::istream &in) {
+	int size{0};
+	std::istream_iterator<std::string> it{in};
+
+	while(it != std::istream_iterator<std::string>{}) {
+		it++;
+		size++;
+	}
+	return size;
+
+}
+
+int acount (std::istream &in) {
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, 'a');
+
+}
+
+int countn (std::istream &in) {
+
+	return std::count(std::istreambuf_iterator<char>{in},std::istreambuf_iterator<char>{}, '\n');
+
+}
+
+int sumi (std::istream &in) {
+	return std::accumulate(std::istream_iterator<int>{in},std::istream_iterator<int>{}, 0);
+
+}
+
+std::vector multab (std::istream &in) {
+	int multvalue{0};
+	std::cout << "put in a number between 1 and 20";
+	in >> multvalue;
+
+	std::vector<int> w{};
+	std::generate_n(std::back_inserter(w),multvalue,[&multvalue]{return multvalue*=2.0;});
+
+
+}
+
+
+

@@ -1,0 +1,17 @@
+#include <iterator>
+#include <algorithm>
+
+int chcount (std::istream &in) {
+	int size{0};
+	using input = std::istream_iterator<char>;
+
+	input it{in};
+
+	while(it != input{}) {
+		size++;
+	}
+	return size;
+
+}
+
+

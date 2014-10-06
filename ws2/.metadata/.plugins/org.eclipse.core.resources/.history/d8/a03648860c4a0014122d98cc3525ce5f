@@ -1,0 +1,9 @@
+#ifndef 7DIGIT_H_
+#define 7DIGIT_H_
+
+#include <iostream>
+
+void printLargeDigit(unsigned i, std::ostream &out);
+
+
+#endif /* 7DIGIT_H_ */

@@ -1,0 +1,16 @@
+#include <iostream>
+#include "chcount.h"
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+int main(){
+	std::vector<std::vector<int>> m = multab(std::cin);
+	std::copy(m.begin(), m.end(), std::ostream_iterator<int>(std::cout, " "));
+
+	//std::cout << chcount(std::cin);
+
+}
+
+
+

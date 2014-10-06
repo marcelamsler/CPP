@@ -1,0 +1,17 @@
+#ifndef CHARC_H_
+#define CHARC_H_
+
+#include <iostream>
+#include <string>
+
+struct CharCounter {
+	std::ostream &outstream;
+	std::istream &instream;
+
+	int countNonWhiteSpaceChar() const;
+
+};
+
+
+
+#endif /* CHARC_H_ */

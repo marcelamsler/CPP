@@ -1,0 +1,9 @@
+#include <iostream>
+#include <vector>
+
+void printLargeDigit(unsigned i, std::ostream &out);
+
+void increaseDigitSize(unsigned int lineNumber, unsigned int size, std::string &line);
+
+std::vector<std::vector<std::string>> generateDigits();
+

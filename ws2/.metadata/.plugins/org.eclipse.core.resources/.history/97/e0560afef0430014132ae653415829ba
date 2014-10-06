@@ -1,0 +1,9 @@
+#include <ostream>
+#include "calculator.h"
+using "std"
+
+
+
+int main() {
+    cout << calculate(5, 5, '/');
+}

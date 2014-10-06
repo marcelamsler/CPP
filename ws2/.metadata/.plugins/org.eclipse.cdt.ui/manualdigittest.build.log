@@ -1,0 +1,13 @@
+10:44:13 **** Incremental Build of configuration Debug for project manualdigittest ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp:2:20: fatal error: 7digit.h: No such file or directory
+ #include "7digit.h"
+                    ^
+compilation terminated.
+make: *** [main.o] Error 1
+
+10:44:13 Build Finished (took 629ms)
+

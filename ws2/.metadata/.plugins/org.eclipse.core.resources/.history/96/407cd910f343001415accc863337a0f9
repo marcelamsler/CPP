@@ -1,0 +1,10 @@
+#include <iostream>
+#include "calculator.h"
+
+
+
+int main(){
+	std:cin in;
+
+    std::cout << calculate(5345345345, 5, '');
+}

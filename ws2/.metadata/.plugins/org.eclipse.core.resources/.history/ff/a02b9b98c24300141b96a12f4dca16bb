@@ -1,0 +1,8 @@
+#include "charc.h"
+
+
+int CharCounter::countNonWhiteSpaceChar() const{
+	CharCounter::outstream << "test";
+}
+
+

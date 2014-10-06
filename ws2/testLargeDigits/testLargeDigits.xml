@@ -1,0 +1,9 @@
+<testsuites>
+	<testsuite name="AllTests" tests="1">
+		<testcase classname="AllTests" name="test59">
+			<failure message="../src/Test.cpp:35 test59: &quot;\\n - \\n|  \\n - \\n  |\\n - \\n\\n - \\n| |\\n - \\n  |\\n - \\n&quot; == out.str() expected:	\n - \n|  \n - \n  |\n - \n\n - \n| |\n - \n  |\n - \n	but was:		">
+test59: &quot;\\n - \\n|  \\n - \\n  |\\n - \\n\\n - \\n| |\\n - \\n  |\\n - \\n&quot; == out.str() expected:	\n - \n|  \n - \n  |\n - \n\n - \n| |\n - \n  |\n - \n	but was:		
+			</failure>
+		</testcase>
+	</testsuite>
+</testsuites>

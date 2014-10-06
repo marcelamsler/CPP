@@ -1,0 +1,17 @@
+#include "charc.h"
+#include <string>
+
+
+int CharCounter::countNonWhiteSpaceChar() const{
+	int length;
+	while(CharCounter::instream.good()) {
+		char c = 'c';
+		CharCounter::instream >> char;
+		length++;
+	}
+
+
+	length;
+}
+
+

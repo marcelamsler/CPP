@@ -1,0 +1,11 @@
+10:12:37 **** Build of configuration Debug for project digit ****
+make all 
+Building file: ../src/digit.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/digit.d" -MT"src/digit.d" -o "src/digit.o" "../src/digit.cpp"
+Finished building: ../src/digit.cpp
+ 
+make: *** No rule to make target `digit.o', needed by `libdigit.a'.  Stop.
+
+10:12:39 Build Finished (took 1s.627ms)
+

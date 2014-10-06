@@ -1,0 +1,11 @@
+#include <iostream>
+#include "chcount.h"
+
+int main(){
+	std::cout << "put in a number between 1 and 20";
+	std::cout << multab(std::cin);
+
+}
+
+
+

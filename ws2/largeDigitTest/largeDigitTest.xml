@@ -1,0 +1,11 @@
+<testsuites>
+	<testsuite name="AllTests" tests="7">
+		<testcase classname="AllTests" name="test0"/>
+		<testcase classname="AllTests" name="test5"/>
+		<testcase classname="AllTests" name="test9"/>
+		<testcase classname="AllTests" name="test9size2"/>
+		<testcase classname="AllTests" name="test59"/>
+		<testcase classname="AllTests" name="test59output"/>
+		<testcase classname="AllTests" name="testOutOfBounds"/>
+	</testsuite>
+</testsuites>

@@ -1,0 +1,111 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+
+std::vector<std::vector<std::string>> generateDigits() {
+
+	std::vector<std::vector<std::string>> digits{10};
+
+	digits[0].push_back(" - ");
+	digits[0].push_back("| |");
+	digits[0].push_back("   ");
+	digits[0].push_back("| |");
+	digits[0].push_back(" - ");
+
+	digits[1].push_back(" - ");
+	digits[1].push_back("  |");
+	digits[1].push_back("   ");
+	digits[1].push_back("  |");
+	digits[1].push_back("   ");
+
+	digits[2].push_back(" - ");
+	digits[2].push_back("  |");
+	digits[2].push_back(" -  ");
+	digits[2].push_back("|  ");
+	digits[2].push_back(" -  ");
+
+	digits[3].push_back(" - ");
+	digits[3].push_back("  |");
+	digits[3].push_back(" -  ");
+	digits[3].push_back("  |");
+	digits[3].push_back(" -  ");
+
+	digits[4].push_back("   ");
+	digits[4].push_back("| |");
+	digits[4].push_back(" -  ");
+	digits[4].push_back("  |");
+	digits[4].push_back("   ");
+
+	digits[5].push_back(" - ");
+	digits[5].push_back("|  ");
+	digits[5].push_back(" - ");
+	digits[5].push_back("  |");
+	digits[5].push_back(" - ");
+
+	digits[6].push_back(" - ");
+	digits[6].push_back("|  ");
+	digits[6].push_back(" - ");
+	digits[6].push_back("| |");
+	digits[6].push_back(" - ");
+
+	digits[7].push_back(" - ");
+	digits[7].push_back("  |");
+	digits[7].push_back(" - ");
+	digits[7].push_back("  |");
+	digits[7].push_back("   ");
+
+	digits[8].push_back(" - ");
+	digits[8].push_back("| |");
+	digits[8].push_back(" - ");
+	digits[8].push_back("| |");
+	digits[8].push_back(" - ");
+
+	digits[9].push_back(" - ");
+	digits[9].push_back("| |");
+	digits[9].push_back(" - ");
+	digits[9].push_back("  |");
+	digits[9].push_back(" - ");
+
+	return digits;
+
+}
+
+void increaseDigitSize(unsigned int lineNumber, unsigned int size, std::string line) {
+	if (lineNumber % 2) {
+		for (unsigned int i = 0; i < size; i++) {
+			line.append(0, line[0]);
+			line.append(2, line[2]);
+		}
+	} else {
+		for (unsigned int i = 0; i < size; i++) {
+			line.append(1, line[1]);
+		}
+	}
+}
+
+void printLargeDigit(unsigned int i, unsigned int size, std::ostream &out) {
+
+	if (i > 9) return;
+
+	std::vector<std::vector<std::string>> digits = generateDigits();
+
+	unsigned int lineNumber{1};
+
+	for_each(digits[i].begin(), digits[i].end(),[&out, &lineNumber, size] (std::string line) {
+		increaseDigitSize(lineNumber, size, line);
+
+		out << line << "\n";
+		lineNumber++;
+
+
+	});
+}
+
+
+
+
+
+
+
+

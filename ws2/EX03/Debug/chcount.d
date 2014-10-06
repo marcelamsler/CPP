@@ -1,0 +1,1 @@
+chcount.d: ../chcount.cpp

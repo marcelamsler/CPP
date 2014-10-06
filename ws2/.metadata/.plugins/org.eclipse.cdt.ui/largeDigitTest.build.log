@@ -1,0 +1,10 @@
+10:40:46 **** Incremental Build of configuration Debug for project largeDigitTest ****
+make all 
+Building target: largeDigitTest
+Invoking: GCC C++ Linker
+g++ -L"/home/hsr/workspaces/ws2/digit1/Debug" -o "largeDigitTest"  ./src/Test.o   -ldigit1
+Finished building target: largeDigitTest
+ 
+
+10:40:46 Build Finished (took 187ms)
+

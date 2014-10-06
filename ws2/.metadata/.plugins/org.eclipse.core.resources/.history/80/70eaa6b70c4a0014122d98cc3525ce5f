@@ -1,0 +1,15 @@
+#include <iostream>
+#include <vector>
+
+void printLargeDigit(unsigned int i, std::ostream &out) {
+
+
+
+}
+
+
+std::vector<std::vector<unsigned int>> generateDigits(unsigned int i) {
+
+}
+
+

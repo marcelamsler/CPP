@@ -1,0 +1,13 @@
+15:50:52 **** Build of configuration Debug for project mtest ****
+make all 
+Building file: ../main.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp:1:19: fatal error: digit.h: No such file or directory
+ #include "digit.h"
+                   ^
+compilation terminated.
+make: *** [main.o] Error 1
+
+15:50:52 Build Finished (took 228ms)
+

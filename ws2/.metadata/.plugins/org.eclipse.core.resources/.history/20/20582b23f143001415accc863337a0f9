@@ -1,0 +1,8 @@
+#include <iostream>
+#include "calculator.h"
+
+
+
+int main(){
+    std::cout << calculate(5345345345, 5, '/');
+}

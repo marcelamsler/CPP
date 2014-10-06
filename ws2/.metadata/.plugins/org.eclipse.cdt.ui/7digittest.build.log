@@ -1,0 +1,6 @@
+10:27:47 **** Incremental Build of configuration Debug for project 7digittest ****
+make all 
+make: Nothing to be done for `all'.
+
+10:27:47 Build Finished (took 118ms)
+

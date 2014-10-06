@@ -1,0 +1,16 @@
+15:34:37 **** Build of configuration Debug for project CountlibTest ****
+make all 
+Building file: ../src/Test.cpp
+Invoking: GCC C++ Compiler
+g++ -I"/home/hsr/workspaces/ws2/CountlibTest/cute" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Test.d" -MT"src/Test.d" -o "src/Test.o" "../src/Test.cpp"
+Finished building: ../src/Test.cpp
+ 
+Building target: CountlibTest
+Invoking: GCC C++ Linker
+g++  -o "CountlibTest"  ./src/Test.o   -lCountinglib
+/usr/bin/ld: cannot find -lCountinglib
+collect2: error: ld returned 1 exit status
+make: *** [CountlibTest] Error 1
+
+15:34:39 Build Finished (took 2s.108ms)
+

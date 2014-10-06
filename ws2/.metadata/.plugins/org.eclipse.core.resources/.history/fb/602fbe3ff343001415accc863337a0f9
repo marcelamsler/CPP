@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+#include "calculator.h"
+
+
+
+int main(){
+	int first{0}, second{0};
+	char operation{};
+
+
+	std::cin >> first;
+	std::cin >> second;
+	std::cin >> operation;
+
+    std::cout << calculate(first, second,operation);
+}

@@ -1,0 +1,15 @@
+#include <iostream>
+#include "chcount.h"
+#include <vector>
+#include <algorithm>
+#include <iterator>
+
+int main(){
+	std::cout << "put in a number between 1 and 20";
+	std::vector<int> m = multab(std::cin);
+	std::copy(m.begin(), m.end(), std::ostream_iterator<char>(std::cout, " "));
+
+}
+
+
+

@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+
+void printLargeDigit(unsigned int i, std::ostream &out) {
+
+
+
+}
+
+
+std::vector<std::vector<std::string>> generateDigits(unsigned int i) {
+
+	std::vector<std::vector<std::string>> digits{10};
+
+
+
+
+
+}
+
+

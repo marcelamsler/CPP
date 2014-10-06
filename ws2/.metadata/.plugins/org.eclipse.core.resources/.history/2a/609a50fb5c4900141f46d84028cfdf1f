@@ -1,0 +1,43 @@
+#include <iterator>
+#include <algorithm>
+#include <string>
+
+int chcount (std::istream &in) {
+	int size{0};
+	std::istreambuf_iterator<char> it{in};
+
+	while(it != std::istreambuf_iterator<char>{}) {
+		it++;
+		size++;
+	}
+	return size;
+
+}
+
+int wcount (std::istream &in) {
+	int size{0};
+	std::istream_iterator<std::string> it{in};
+
+	while(it != std::istream_iterator<std::string>{}) {
+		it++;
+		size++;
+	}
+	return size;
+
+}
+
+int acount (std::istream &in) {
+	std::string str{};
+
+	std::istream_iterator<std::string> it{in};
+
+	while(it != std::istream_iterator<std::string>{}) {
+		str = *it;
+		it++;
+	}
+	return std::count(str.begin(),str.end(), 'a');
+
+}
+
+
+
