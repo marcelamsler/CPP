@@ -1,0 +1,54 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+
+# Compiled Dynamic libraries
+*.so
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+.DS_Store
+Debug
+.metadata/
+
+.gitignore.swp
+
+ws0/evensmaller/a.out
+
+
+ws3/algorithmdemo/.settings/org.eclipse.cdt.codan.core.prefs
+ws4/chapter_function_syntax_clang/.settings/
+ws4/chapter_function_syntax_test/chapter_function_syntax_test.xml
+ws4/chapter_function_syntax_test/cute/
+ws4/chapter_function_syntax/.settings/language.settings.xml
+ws7/maplegacyloop/.settings/language.settings.xml
+ws?/*Test/*Test.xml
+ws?/*/.settings/language.settings.xml
+
+
+*.prefs
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
