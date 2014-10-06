@@ -10,4 +10,8 @@ void printMultipleLargeDigits(unsigned int number, unsigned int size, std::ostre
 
 std::vector<std::vector<std::string>> generateDigits();
 
+std::vector<std::vector<std::string>> generateMultipleLargeDigitVector(std::string digits);
+
+std::vector<std::string> getLargeDigit (unsigned int number);
+
 #endif /* DIGIT_H_ */

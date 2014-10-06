@@ -23,19 +23,19 @@ std::vector<std::vector<std::string>> generateDigits() {
 
 	digits[2].push_back(" - ");
 	digits[2].push_back("  |");
-	digits[2].push_back(" -  ");
+	digits[2].push_back(" - ");
 	digits[2].push_back("|  ");
-	digits[2].push_back(" -  ");
+	digits[2].push_back(" - ");
 
 	digits[3].push_back(" - ");
 	digits[3].push_back("  |");
-	digits[3].push_back(" -  ");
+	digits[3].push_back(" - ");
 	digits[3].push_back("  |");
-	digits[3].push_back(" -  ");
+	digits[3].push_back(" - ");
 
 	digits[4].push_back("   ");
 	digits[4].push_back("| |");
-	digits[4].push_back(" -  ");
+	digits[4].push_back(" - ");
 	digits[4].push_back("  |");
 	digits[4].push_back("   ");
 
@@ -73,6 +73,15 @@ std::vector<std::vector<std::string>> generateDigits() {
 
 }
 
+std::vector<std::string> getLargeDigit (unsigned int number) {
+
+	std::vector<std::vector<std::string>> digits = generateDigits();
+
+	return digits[number];
+
+
+}
+
 void printLargeDigit(unsigned int number, unsigned int size, std::ostream &out) {
 
 	if (number > 9) return;
@@ -101,6 +110,18 @@ void printLargeDigit(unsigned int number, unsigned int size, std::ostream &out) 
 		lineNumber++;
 
 	});
+}
+
+std::vector<std::vector<std::string>> generateMultipleLargeDigitVector(std::string digits) {
+	std::vector<std::vector<std::string>> multiDigitVector{digits.size()};
+
+	for_each(digits.begin(), digits.end(), [&](const char digit){
+		unsigned int numberToInsert{ digit - '0'};
+		multiDigitVector.push_back(getLargeDigit(numberToInsert));
+
+	});
+	return multiDigitVector;
+
 }
 
 
