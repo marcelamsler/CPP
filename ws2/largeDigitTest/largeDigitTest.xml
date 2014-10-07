@@ -4,8 +4,16 @@
 		<testcase classname="AllTests" name="test5"/>
 		<testcase classname="AllTests" name="test9"/>
 		<testcase classname="AllTests" name="test9size2"/>
-		<testcase classname="AllTests" name="test59"/>
-		<testcase classname="AllTests" name="test59output"/>
+		<testcase classname="AllTests" name="test59">
+			<error message="test59 vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)" type="unexpected exception">
+vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)
+			</error>
+		</testcase>
+		<testcase classname="AllTests" name="test59output">
+			<error message="test59output vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)" type="unexpected exception">
+vector::_M_range_check: __n (which is 0) >= this->size() (which is 0)
+			</error>
+		</testcase>
 		<testcase classname="AllTests" name="testOutOfBounds"/>
 	</testsuite>
 </testsuites>

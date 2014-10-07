@@ -1,12 +1,8 @@
-17:29:57 **** Build of configuration Debug for project digit1 ****
+18:00:53 **** Incremental Build of configuration Debug for project digit1 ****
 make all 
 Building file: ../src/digit.cpp
 Invoking: GCC C++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/digit.d" -MT"src/digit.d" -o "src/digit.o" "../src/digit.cpp"
-../src/digit.cpp: In lambda function:
-../src/digit.cpp:119:38: warning: narrowing conversion of ‘(((int)digit) + -48)’ from ‘int’ to ‘unsigned int’ inside { } [-Wnarrowing]
-   unsigned int numberToInsert{ digit - '0'};
-                                      ^
 Finished building: ../src/digit.cpp
  
 Building target: libdigit1.a
@@ -14,4 +10,27 @@ Invoking: GCC Archiver
 ar -r  "libdigit1.a"  ./src/digit.o   
 ar: creating libdigit1.a
 Finished building target: libdigit1.a
+ 
+18:00:57 **** Incremental Build of configuration Debug for project digit1 ****
+make all 
+make: Nothing to be done for `all'.
+18:00:57 **** Incremental Build of configuration Debug for project digit1 ****
+make all 
+Building file: ../src/digit.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/digit.d" -MT"src/digit.d" -o "src/digit.o" "../src/digit.cpp"
+Finished building: ../src/digit.cpp
+ 
+Building target: libdigit1.a
+Invoking: GCC Archiver
+ar -r  "libdigit1.a"  ./src/digit.o   
+ar: creating libdigit1.a
+Finished building target: libdigit1.a
+ 
+18:00:59 **** Incremental Build of configuration Debug for project largeDigitTest ****
+make all 
+Building target: largeDigitTest
+Invoking: GCC C++ Linker
+g++ -L"/home/hsr/workspaces/ws2/digit1/Debug" -o "largeDigitTest"  ./src/Test.o   -ldigit1
+Finished building target: largeDigitTest
  

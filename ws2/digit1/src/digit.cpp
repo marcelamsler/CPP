@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 
 std::vector<std::vector<std::string>> generateDigits() {
 
@@ -116,7 +117,7 @@ std::vector<std::vector<std::string>> generateMultipleLargeDigitVector(std::stri
 	std::vector<std::vector<std::string>> multiDigitVector{digits.size()};
 
 	for_each(digits.begin(), digits.end(), [&](const char digit){
-		unsigned int numberToInsert{ digit - '0'};
+		int numberToInsert{ digit - '0'};
 		multiDigitVector.push_back(getLargeDigit(numberToInsert));
 
 	});
@@ -127,13 +128,19 @@ std::vector<std::vector<std::string>> generateMultipleLargeDigitVector(std::stri
 
 
 void printMultipleLargeDigits(unsigned int number, unsigned int size, std::ostream &out){
-	std::string digits = std::to_string(number);
+	std::vector<std::vector<std::string>> digitVector = generateMultipleLargeDigitVector(std::to_string(number));
 
-	for_each(digits.begin(), digits.end(), [&size, &out](const char digit){
-		unsigned int bla{};
-		bla = digit - '0';
-		printLargeDigit(bla, size, out);
-	});
+	unsigned int lineNumber{0};
+	out << std::setw(10);
+
+	while (lineNumber < 5){
+
+		for_each(digitVector.begin(), digitVector.end(), [&size, &out, &lineNumber](const std::vector<std::string> digit){
+			out << digit.at(lineNumber);
+		});
+		out << "\n";
+		lineNumber++;
+	}
 }
 
 

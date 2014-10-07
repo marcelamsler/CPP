@@ -1,12 +1,8 @@
-17:29:57 **** Build of configuration Debug for project digit1 ****
+18:00:57 **** Incremental Build of configuration Debug for project digit1 ****
 make all 
 Building file: ../src/digit.cpp
 Invoking: GCC C++ Compiler
 g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/digit.d" -MT"src/digit.d" -o "src/digit.o" "../src/digit.cpp"
-../src/digit.cpp: In lambda function:
-../src/digit.cpp:119:38: warning: narrowing conversion of ‘(((int)digit) + -48)’ from ‘int’ to ‘unsigned int’ inside { } [-Wnarrowing]
-   unsigned int numberToInsert{ digit - '0'};
-                                      ^
 Finished building: ../src/digit.cpp
  
 Building target: libdigit1.a
@@ -16,5 +12,5 @@ ar: creating libdigit1.a
 Finished building target: libdigit1.a
  
 
-17:29:58 Build Finished (took 1s.326ms)
+18:00:58 Build Finished (took 1s.293ms)
 
