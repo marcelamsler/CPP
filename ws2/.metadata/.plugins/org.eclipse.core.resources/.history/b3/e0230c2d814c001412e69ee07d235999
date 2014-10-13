@@ -1,7 +1,0 @@
-#include <iostream>
-#include <vector>
-
-void printLargeDigit(unsigned i, std::ostream &out);
-
-std::vector<std::vector<std::string>> generateDigits();
-
