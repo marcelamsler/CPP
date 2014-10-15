@@ -15,18 +15,12 @@ Word::Word(std::string wordinput):word{wordinput}
 }
 
 void Word::readWord(std::istream &in){
-
-using input = std::istream_iterator<char>;
-input eof {};
-
-for_each(input{in}, eof,[&] (const char c){
-	if(std::isalpha(c)){
+	char c{};
+	in >> c;
+	while(std::isalpha(c)){
 		word.push_back(c);
-	} else {
-		return;
+		in >> c;
 	}
-});
-
 }
 
 
