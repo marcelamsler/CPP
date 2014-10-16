@@ -15,11 +15,15 @@ Word::Word(std::string wordinput):word{wordinput}
 }
 
 void Word::readWord(std::istream &in){
-	char c{};
-	in >> c;
+	char c = in.get();
+
+	while(!std::isalpha(c)){
+		c = in.get();
+	}
+
 	while(std::isalpha(c)){
 		word.push_back(c);
-		in >> c;
+		c = in.get();
 	}
 }
 
