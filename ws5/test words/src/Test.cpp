@@ -48,6 +48,12 @@ void wordCompareTest1(){
 	ASSERT(w1 != w2);
 }
 
+void wordEqualityTest(){
+	Word w1{"HelloWorld"};
+	Word w2{"helloworlD"};
+	ASSERT(w1 == w2);
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(wordInvariantTest));
@@ -55,6 +61,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(wordInputOperatorTest2));
 	s.push_back(CUTE(wordOutputOperatorTest));
 	s.push_back(CUTE(wordCompareTest1));
+	s.push_back(CUTE(wordEqualityTest));
+
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
