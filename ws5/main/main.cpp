@@ -1,17 +1,11 @@
 #include "word.h"
+#include "wordlist.h"
 #include "iostream"
-#include <vector>
+#include <list>
 #include <algorithm>
 
 int main(){
-	std::vector<Word> list{};
-
-
-	while(std::cin){
-		Word w{""};
-		std::cin >> w;
-		list.push_back(w);
-	}
+	std::list<Word> list = createWordList(std::cin);
 
 	for_each(list.begin(), list.end(), [](Word w){
 		std::cout << w << std::endl;
