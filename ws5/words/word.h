@@ -3,11 +3,18 @@
 
 #include <string>
 #include <iostream>
+#include <boost/operators.hpp>
 
-struct Word {
+struct Word
+		: boost::less_than_comparable<Word>
+		, boost::equality_comparable<Word>{
 	std::string word;
-	Word(std::string wordInput);
+	Word(std::string const wordInput);
 	void readWord(std::istream &in);
+	bool operator <(Word const& otherWord) const;
+	bool operator ==(Word const& otherWord) const {
+		return word == otherWord.word;
+	}
 };
 
 inline std::istream& operator >>(std::istream &in, Word &word){

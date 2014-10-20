@@ -1,6 +1,9 @@
 <testsuites>
-	<testsuite name="AllTests" tests="2">
-		<testcase classname="AllTests" name="thisIsATest"/>
-		<testcase classname="AllTests" name="thisIsATest2"/>
+	<testsuite name="AllTests" tests="5">
+		<testcase classname="AllTests" name="wordInvariantTest"/>
+		<testcase classname="AllTests" name="wordInputOperatorTest1"/>
+		<testcase classname="AllTests" name="wordInputOperatorTest2"/>
+		<testcase classname="AllTests" name="wordOutputOperatorTest"/>
+		<testcase classname="AllTests" name="wordCompareTest1"/>
 	</testsuite>
 </testsuites>

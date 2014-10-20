@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <stdexcept>
 
+
 Word::Word(std::string wordinput):word{wordinput}
 {
 	for_each(wordinput.begin(), wordinput.end(), [](const char c)
@@ -25,6 +26,10 @@ void Word::readWord(std::istream &in){
 		word.push_back(c);
 		c = in.get();
 	}
+}
+
+bool Word::operator <(Word const& otherWord) const {
+		return word < otherWord.word;
 }
 
 
