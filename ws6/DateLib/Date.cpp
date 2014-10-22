@@ -3,10 +3,6 @@
 #include <ostream>
 #include <iomanip>
 
-
-
-
-
 void Date::print(std::ostream& out) const {
 	auto ch = out.fill('0');
 	out << std::setw(2) << day << '.';
@@ -91,4 +87,4 @@ bool Date::operator <(Date const& rhs) const {
 	return year < rhs.year ||
 		(year == rhs.year && (month < rhs.month ||
 			(month==rhs.month && day < rhs.day)));
-}Date.cpp
+}
