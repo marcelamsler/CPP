@@ -11,7 +11,17 @@ void Date::print(std::ostream& out) const {
 	out.fill(ch);
 }
 
-Weekday day_of_week() {
+Weekday Date::day_of_week() {
+
+	int shifted_month{month};
+	int year_of_the_century{year % 100};
+	int ancestor_century{year/100};
+
+
+
+
+
+
 
 }
 

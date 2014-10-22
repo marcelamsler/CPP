@@ -25,6 +25,8 @@ struct Date{
 	static int  endOfMonth(int year, Month month);
 	void nextDay();
 	bool operator <(Date const& rhs) const;
+private:
+	static int getShiftedMonthForZellerAlgorithm(Month month);
 
 };
 
