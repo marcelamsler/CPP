@@ -12,6 +12,22 @@ void testOtherCtor() {
 	ASSERT(testDate == otherDate);
 }
 
+void testDayOfWeek(){
+	Date date {Jan, 1, 2000};
+	Weekday day = date.day_of_week();
+	ASSERT(Sat == day);
+}
+
+void testDayOfWeek2(){
+	Date date2 {Mar, 1, 2000};
+	Weekday day2 = date2.day_of_week();
+	ASSERT(Wed == day2);
+
+	Date date {Oct, 23, 2014};
+	Weekday day = date.day_of_week();
+	ASSERT(Thu == day);
+}
+
 void testPrintADate() {
 	std::ostringstream os;
 	Date day { 2012, Aug, 20 };
@@ -190,6 +206,8 @@ void testInputShortLimit() {
 void runAllTests(int argc, char const *argv[]) {
 	cute::suite s;
 	s.push_back(CUTE(testOtherCtor));
+	s.push_back(CUTE(testDayOfWeek));
+	s.push_back(CUTE(testDayOfWeek2));
 	s.push_back(CUTE(testPrintADate));
 	s.push_back(CUTE(testPrintADateDoesntChangeFillChar));
 	s.push_back(CUTE(testIsValidYearLowerBoundary));

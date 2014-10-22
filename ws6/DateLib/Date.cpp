@@ -11,18 +11,35 @@ void Date::print(std::ostream& out) const {
 	out.fill(ch);
 }
 
-Weekday Date::day_of_week() {
+int Date::getShiftedMonthForZellerAlgorithm(Month month) {
+	if (month <= 2)
+		return month + Dec;
+	else
+		return month;
+}
 
-	int shifted_month{month};
-	int year_of_the_century{year % 100};
-	int ancestor_century{year/100};
+int Date::getYearFromShiftedMonth(int shifted_month) const {
+	if (shifted_month > 12)
+		return (year -1);
+	else
+		return year;
 
+}
 
+Weekday Date::day_of_week() const {
 
+	int shifted_month{getShiftedMonthForZellerAlgorithm(month)};
+	int zeller_year = getYearFromShiftedMonth(shifted_month);
+	int year_of_the_century{zeller_year % 100};
+	int century{zeller_year/100};
 
+	int algorithm_result{(day +((13*(shifted_month + 1))/5)
+		+ year_of_the_century +(year_of_the_century/4)
+		+ (century/4) - 2 * century) % 7};
 
+	if (algorithm_result < 0) algorithm_result = algorithm_result + 7;
 
-
+	return static_cast<Weekday>(algorithm_result);
 }
 
 bool Date::isValidYear(int year) {
@@ -76,9 +93,3 @@ bool Date::operator <(Date const& rhs) const {
 			(month==rhs.month && day < rhs.day)));
 }
 
-static int getShiftedMonthForZellerAlgorithm(Month month) {
-	if (month <= 2)
-		return month + Dec;
-	else
-		return month + Feb;
-}
