@@ -11,6 +11,10 @@ void Date::print(std::ostream& out) const {
 	out.fill(ch);
 }
 
+Weekday day_of_week() {
+
+}
+
 bool Date::isValidYear(int year) {
 	return year >= 1813 && year < 10000;
 }

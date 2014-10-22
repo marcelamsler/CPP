@@ -10,7 +10,6 @@ void testOtherCtor() {
 	Date testDate{Aug, 20, 2012};
 	Date otherDate{2012, Aug, 20};
 	ASSERT(testDate == otherDate);
-
 }
 
 void testPrintADate() {
