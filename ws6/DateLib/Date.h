@@ -19,6 +19,7 @@ struct Date{
 	static bool isLeapYear(int year);
 	static bool isValidDate(int year, Month month, int day);
 	Date(int year, Month month, int day);
+	Date(Month month, int day, int year):Date{year, month, day}{};
 	static int  endOfMonth(int year, Month month);
 	void nextDay();
 	bool operator <(Date const& rhs) const;
