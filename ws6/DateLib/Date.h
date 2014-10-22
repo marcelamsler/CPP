@@ -4,7 +4,7 @@
 #include <iosfwd>
 
 enum Month {Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec};
-enum Weekday {Mon = 1, Tue, Wed, Thu, Fri, Sat, Sun};
+enum Weekday {Sat, Sun, Mon, Tue, Wed, Thu, Fri};
 
 inline Month operator++(Month &amonth){
 	int month = (amonth+1)%(Dec);

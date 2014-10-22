@@ -75,3 +75,10 @@ bool Date::operator <(Date const& rhs) const {
 		(year == rhs.year && (month < rhs.month ||
 			(month==rhs.month && day < rhs.day)));
 }
+
+static int getShiftedMonthForZellerAlgorithm(Month month) {
+	if (month <= 2)
+		return month + Dec;
+	else
+		return month + Feb;
+}
