@@ -3,39 +3,25 @@
 
 #include <iosfwd>
 
+enum Month {Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec};
+inline Month operator++(Month &amonth){
+	int month = (amonth+1)%(Dec);
+	amonth = static_cast<Month>(month);
+	return amonth;
 
-/*
+}
+
 struct Date{
-*/
-class Date{
-private:
-public:
-	int year, month, day;
-
-//...
-
-
-
-
-public:
+	Month month;
+	int year, day;
 	void print(std::ostream& out) const;
 	static bool isValidYear(int year);
 	static bool isLeapYear(int year);
-	static bool isValidDate(int year, int month, int day);
-	Date(int year, int month, int day);
-	static int  endOfMonth(int year, int month);
+	static bool isValidDate(int year, Month month, int day);
+	Date(int year, Month month, int day);
+	static int  endOfMonth(int year, Month month);
 	void nextDay();
 	bool operator <(Date const& rhs) const;
-
-/*
-private:
-	int year, month, day;
-*/
-
-
-
-
-
 
 };
 

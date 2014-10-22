@@ -10,7 +10,7 @@
 
 void testPrintADate() {
 	std::ostringstream os;
-	Date day{2012,8,20};
+	Date day{2012,Aug,20};
 	day.print(os);
 	ASSERT_EQUAL("20.08.2012",os.str());
 }
@@ -20,7 +20,7 @@ void testPrintADate() {
 
 void testPrintADateDoesntChangeFillChar() {
 	std::ostringstream os;
-	Date day{2012,8,20};
+	Date day{2012,Aug,20};
 	auto ch=os.fill();
 	day.print(os);
 	ASSERT_EQUAL(ch,os.fill());
@@ -49,16 +49,15 @@ void testIsLeapYear(){
 }
 
 void testIsValidDateValid(){
-	ASSERT(Date::isValidDate(2012,8,20));
-	ASSERT(Date::isValidDate(2012,2,29));
-	ASSERT(Date::isValidDate(2000,2,29));
-	ASSERT(Date::isValidDate(2011,12,31));
+	ASSERT(Date::isValidDate(2012,Aug,20));
+	ASSERT(Date::isValidDate(2012,Feb,29));
+	ASSERT(Date::isValidDate(2000,Feb,29));
+	ASSERT(Date::isValidDate(2011,Dec,31));
 }
 void testIsValidDateInValid(){
-	ASSERT(! Date::isValidDate(2012,6,31));
-	ASSERT(! Date::isValidDate(2011,2,29));
-	ASSERT(! Date::isValidDate(1900,2,29));
-	ASSERT(! Date::isValidDate(2011,0,31));
+	ASSERT(! Date::isValidDate(2012,Jun,31));
+	ASSERT(! Date::isValidDate(2011,Feb,29));
+	ASSERT(! Date::isValidDate(1900,Feb,29));
 }
 
 
@@ -69,10 +68,8 @@ void testIsValidDateInValid(){
 
 
 void testDateCtorThrowsIfInvalid(){
-	ASSERT_THROWS((Date{2012,6,31}),std::out_of_range);
-	ASSERT_THROWS((Date{0,0,0}),std::out_of_range);
-	ASSERT_THROWS((Date{1900,2,29}),std::out_of_range);
-	ASSERT_THROWS((Date{2011,0,31}),std::out_of_range);
+	ASSERT_THROWS((Date{2012,Jun,31}),std::out_of_range);
+	ASSERT_THROWS((Date{1900,Feb,29}),std::out_of_range);
 }
 
 
@@ -89,9 +86,9 @@ bool datesAreEqual(Date const &l, Date const &r){
 
 
 void testNextDaySimple(){
-	Date aday{2012,8,20};
+	Date aday{2012,Aug,20};
 	aday.nextDay();
-	ASSERT(datesAreEqual(aday,Date{2012,8,21}));
+	ASSERT(datesAreEqual(aday,Date{2012,Aug,21}));
 }
 
 
@@ -99,29 +96,29 @@ void testNextDaySimple(){
 
 
 void testNextDayEndOfMonth(){
-	Date eom{2012,8,31};
+	Date eom{2012,Aug,31};
 	eom.nextDay();
-	ASSERT(datesAreEqual(eom,Date{2012,9,1}));
+	ASSERT(datesAreEqual(eom,Date{2012,Sep,1}));
 }
 void testNextDayEndOfShortMonth(){
-	Date eosep{2012,9,30};
+	Date eosep{2012,Sep,30};
 	eosep.nextDay();
-	ASSERT(datesAreEqual(eosep,Date{2012,10,1}));
+	ASSERT(datesAreEqual(eosep,Date{2012,Oct,1}));
 }
 void testNextDayEndOfFeburary(){
-	Date eofeb{2012,2,29};
+	Date eofeb{2012,Feb,29};
 	eofeb.nextDay();
-	ASSERT(datesAreEqual(eofeb,Date{2012,3,1}));
+	ASSERT(datesAreEqual(eofeb,Date{2012,Mar,1}));
 }
 void testNextDayEndOfFeburaryNonLeapYear(){
-	Date eofeb{2013,2,28};
+	Date eofeb{2013,Feb,28};
 	eofeb.nextDay();
-	ASSERT(datesAreEqual(eofeb,Date{2013,3,1}));
+	ASSERT(datesAreEqual(eofeb,Date{2013,Mar,1}));
 }
 void testNextDayNotEndOfFeburaryInLeapYear(){
-	Date aday{2012,2,28};
+	Date aday{2012,Feb,28};
 	aday.nextDay();
-	ASSERT(datesAreEqual(aday,Date{2012,2,29}));
+	ASSERT(datesAreEqual(aday,Date{2012,Feb,29}));
 }
 
 
@@ -129,28 +126,28 @@ void testNextDayNotEndOfFeburaryInLeapYear(){
 
 
 void testNextDayEndOfYear(){
-	Date silvester{2012,12,31};
+	Date silvester{2012,Dec,31};
 	silvester.nextDay();
-	ASSERT(datesAreEqual(silvester,Date{2013,1,1}));
+	ASSERT(datesAreEqual(silvester,Date{2013,Jan,1}));
 }
 void testNextDayEndOfLastAllowedYear(){
-	Date lastdayever{9999,12,31};
+	Date lastdayever{9999,Dec,31};
 	ASSERT_THROWS(lastdayever.nextDay(),std::out_of_range);
 }
 
 void testDateBuildIn(){
-	Date aday{2012,8,10};
+	Date aday{2012,Aug,10};
 	Date bday{aday};
 	ASSERT(datesAreEqual(aday,bday));
-	Date cday{2000,1,1};
+	Date cday{2000,Jan,1};
 	aday = cday;
 	ASSERT(datesAreEqual(aday,cday));
 }
 
 
 void testDateLessThanAdjacentDates(){
-	Date aday{2012,8,13};
-	Date later{2012,8,14};
+	Date aday{2012,Aug,13};
+	Date later{2012,Aug,14};
 	ASSERT(aday < later);
 	ASSERT(!(later < aday)); // asymmetric
 	ASSERT(!(aday < aday)); // not reflexive
@@ -159,8 +156,8 @@ void testDateLessThanAdjacentDates(){
 
 
 void testDateLessThanYearOff(){
-	Date aday{2011,8,13};
-	Date yearlater{2012,8,13};
+	Date aday{2011,Aug,13};
+	Date yearlater{2012,Aug,13};
 	ASSERT(aday < yearlater);
 	ASSERT(!(yearlater < aday));
 }
@@ -169,8 +166,8 @@ void testDateLessThanYearOff(){
 
 
 void testDateLessThanMonthOff(){
-	Date aday{2012,7,13};
-	Date later{2012,8,13};
+	Date aday{2012,Jul,13};
+	Date later{2012,Aug,13};
 	ASSERT(aday < later);
 	ASSERT(!(later < aday));
 }
@@ -179,8 +176,8 @@ void testDateLessThanMonthOff(){
 
 
 void testDateGreaterThan(){
-	Date aday{2012,2,29};
-	Date later{2012,3,1};
+	Date aday{2012,Feb,29};
+	Date later{2012,Mar,1};
 	ASSERT(later > aday);
 	ASSERT(!(aday > later));
 }
@@ -189,8 +186,8 @@ void testDateGreaterThan(){
 
 
 void testDateGreaterThanOrEqual(){
-	Date aday{2012,2,29};
-	Date later{2012,3,1};
+	Date aday{2012,Feb,29};
+	Date later{2012,Mar,1};
 	ASSERT(later >= aday);
 	ASSERT(aday >= aday);
 	ASSERT(!(aday >= later));
@@ -199,8 +196,8 @@ void testDateGreaterThanOrEqual(){
 
 
 void testDateLessThanOrEqual(){
-	Date aday{2012,2,29};
-	Date later{2012,3,1};
+	Date aday{2012,Feb,29};
+	Date later{2012,Mar,1};
 	ASSERT(aday <= aday);
 	ASSERT(aday <= later);
 	ASSERT(!(later <= aday));
@@ -209,19 +206,19 @@ void testDateLessThanOrEqual(){
 
 
 void testDateEqual(){
-	Date aday{2012,7,29};
+	Date aday{2012,Jul,29};
 	ASSERT(aday == aday);
-	ASSERT(aday == (Date{2012,7,29}));
-	ASSERT(!(aday == Date{2012,7,28}));
+	ASSERT(aday == (Date{2012,Jul,29}));
+	ASSERT(!(aday == Date{2012,Jul,28}));
 }
 
 
 
 
 void testDateInEqual(){
-	Date aday{2012,7,29};
+	Date aday{2012,Jul,29};
 	ASSERT(!(aday != aday));
-	ASSERT(aday != (Date{2012,7,28}));
+	ASSERT(aday != (Date{2012,Jul,28}));
 }
 
 
