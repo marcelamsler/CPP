@@ -8,17 +8,8 @@ bool is_palindrome(std::string word){
 
 	boost::algorithm::to_lower(word);
 
-	std::stack<char> stack{};
+	std::string reversedWord{word.crbegin(), word.crend()};
 
-	for_each(word.begin(), word.end(), [&](char c){
-
-			if (!stack.empty() && stack.top() == c) {
-				stack.pop();
-			} else {
-				stack.push(c);
-			}
-	});
-
-	return stack.empty();
+	return word == reversedWord;
 
 }
