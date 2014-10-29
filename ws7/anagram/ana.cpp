@@ -4,10 +4,10 @@
 #include <algorithm>
 #include <iosfwd>
 
-std::set getAllAnagrams(std::string word) {
+std::set<std::string> getAllAnagrams(std::string word) {
 	std::set<std::string> set{};
 
-	std:sort(word.begin(), word.end());
+	std::sort(word.begin(), word.end());
 
 	do {
 	    set.insert(word);

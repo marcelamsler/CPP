@@ -4,7 +4,7 @@
 #include <set>
 #include <string>
 
-std::set getAllAnagrams(std::string word);
+std::set<std::string> getAllAnagrams(std::string word);
 
 
 
