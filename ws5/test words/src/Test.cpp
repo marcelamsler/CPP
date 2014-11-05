@@ -59,14 +59,30 @@ void wordEqualityTest(){
 void kwicTestOneLine() {
 	std::stringstream is{};
 	std::stringstream os{};
-	is << "Das ist ein Test";
+	is << "ab cd efd";
 	printKwicVariations(is, os);
 
-	ASSERT_EQUAL( "  ", os.str());
-
-
+	ASSERT_EQUAL( "ab cd efd \ncd efd ab \nefd ab cd \n", os.str());
 }
 
+void kwicTestTwoLine() {
+	std::stringstream is{};
+	std::stringstream os{};
+	is << "this is a test\n this is another test";
+	printKwicVariations(is, os);
+
+	ASSERT_EQUAL(
+			"a test this is \n"
+			"another test this is \n"
+			"is a test this \n"
+			"is another test this \n"
+			"test this is a \n"
+			"test this is another \n"
+			"this is a test \n"
+			"this is another test \n",
+			os.str()
+	);
+}
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
@@ -77,7 +93,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(wordCompareTest1));
 	s.push_back(CUTE(wordEqualityTest));
 	s.push_back(CUTE(kwicTestOneLine));
-
+	s.push_back(CUTE(kwicTestTwoLine));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
