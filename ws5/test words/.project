@@ -3,7 +3,7 @@
 	<name>test words</name>
 	<comment></comment>
 	<projects>
-		<project>words</project>
+		<project>Kwic</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

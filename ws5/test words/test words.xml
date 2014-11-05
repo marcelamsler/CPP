@@ -1,10 +1,15 @@
 <testsuites>
-	<testsuite name="AllTests" tests="6">
+	<testsuite name="AllTests" tests="7">
 		<testcase classname="AllTests" name="wordInvariantTest"/>
 		<testcase classname="AllTests" name="wordInputOperatorTest1"/>
 		<testcase classname="AllTests" name="wordInputOperatorTest2"/>
 		<testcase classname="AllTests" name="wordOutputOperatorTest"/>
 		<testcase classname="AllTests" name="wordCompareTest1"/>
 		<testcase classname="AllTests" name="wordEqualityTest"/>
+		<testcase classname="AllTests" name="kwicTestOneLine">
+			<failure message="../src/Test.cpp:65 kwicTestOneLine: &quot;  &quot; == os.str() expected:	  	but was:	DasTesteinist\n	">
+kwicTestOneLine: &quot;  &quot; == os.str() expected:	  	but was:	DasTesteinist\n	
+			</failure>
+		</testcase>
 	</testsuite>
 </testsuites>

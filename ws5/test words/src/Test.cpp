@@ -3,9 +3,11 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "word.h"
+#include "kwic.h"
 #include <sstream>
 #include <vector>
 #include <stdexcept>
+
 
 void wordInvariantTest(){
 	ASSERT_THROWS(Word w{" "}, std::out_of_range);
@@ -54,6 +56,18 @@ void wordEqualityTest(){
 	ASSERT(w1 == w2);
 }
 
+void kwicTestOneLine() {
+	std::stringstream is{};
+	std::stringstream os{};
+	is << "Das ist ein Test";
+	printKwicVariations(is, os);
+
+	ASSERT_EQUAL( "  ", os.str());
+
+
+}
+
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(wordInvariantTest));
@@ -62,6 +76,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(wordOutputOperatorTest));
 	s.push_back(CUTE(wordCompareTest1));
 	s.push_back(CUTE(wordEqualityTest));
+	s.push_back(CUTE(kwicTestOneLine));
+
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
