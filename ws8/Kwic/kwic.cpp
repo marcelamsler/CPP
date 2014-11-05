@@ -34,10 +34,9 @@ void printKwicVariations(std::istream &in, std::ostream &out) {
 	std::set<std::vector<Word>> lines { };
 
 	while (in.good()) {
-
-		std::vector<Word> lineSet;
-		in >> lineSet;
-		lines.insert(lineSet);
+		std::vector<Word> lineVector;
+		in >> lineVector;
+		lines.insert(lineVector);
 	}
 
 	for_each(lines.begin(), lines.end(), VariationCreator {}).print(out);

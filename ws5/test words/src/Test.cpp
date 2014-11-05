@@ -84,6 +84,23 @@ void kwicTestTwoLine() {
 	);
 }
 
+void vectorPerLineInputOperatorTest() {
+	std::stringstream is{};
+	std::stringstream os{};
+	std::vector<std::vector<Word>> lineContainer{};
+
+
+	is << "this is\n a test\n this is\n another test";
+	while(is.good()) {
+		std::vector<Word> lineVector;
+		is >> lineVector;
+		lineContainer.push_back(lineVector);
+	}
+
+
+
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(wordInvariantTest));
