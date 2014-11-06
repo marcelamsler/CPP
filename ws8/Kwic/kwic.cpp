@@ -1,6 +1,6 @@
 #include "kwic.h"
 #include "word.h"
-#include <iostream>
+#include <iosfwd>
 #include <vector>
 #include <set>
 #include <string>
@@ -23,7 +23,7 @@ void VariationCreator::print(std::ostream &out) const {
 
 void VariationCreator::createVariations(std::vector<Word> line) {
 	for (size_t i = 0; i < line.size(); i++) {
-		std::vector<Word> newLine {};
+		std::vector<Word> newLine { };
 		std::rotate_copy(line.begin(), line.begin() + i, line.end(), std::back_inserter(newLine));
 		variations.insert(newLine);
 	}
@@ -39,7 +39,7 @@ void printKwicVariations(std::istream &in, std::ostream &out) {
 		lines.insert(lineVector);
 	}
 
-	for_each(lines.begin(), lines.end(), VariationCreator {}).print(out);
+	for_each(lines.begin(), lines.end(), VariationCreator { }).print(out);
 
 }
 
