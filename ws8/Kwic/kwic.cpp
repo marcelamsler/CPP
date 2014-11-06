@@ -16,6 +16,7 @@ void VariationCreator::printLineSet(std::vector<Word> words, std::ostream &out) 
 }
 
 void VariationCreator::print(std::ostream &out) const {
+	out << "\n";
 	for_each(variations.begin(), variations.end(), [&](std::vector<Word> line) {
 		printLineSet(line, out);
 	});

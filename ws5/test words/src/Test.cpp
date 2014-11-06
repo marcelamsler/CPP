@@ -76,21 +76,21 @@ void kwicTestOneLine() {
 
 	printKwicVariations(is, os);
 
-	ASSERT_EQUAL("ab cd efd \ncd efd ab \nefd ab cd \n", os.str());
+	ASSERT_EQUAL("\nab cd efd \ncd efd ab \nefd ab cd \n", os.str());
 }
 
 void kwicTestOneLineWithWeirdInput() {
-	std::stringstream is { "compl33tely ~ weird !!??!! 4matted in_put" };
+	std::stringstream is { "Compl33tely ~ weird !!??!! 4matted in_put" };
 	std::stringstream os { };
 
 	printKwicVariations(is, os);
 
-	ASSERT_EQUAL("compl tely weird matted in put \n"
-			"in put compl tely weird matted \n"
-			"matted in put compl tely weird \n"
-			"put compl tely weird matted in \n"
-			"tely weird matted in put compl \n"
-			"weird matted in put compl tely \n", os.str());
+	ASSERT_EQUAL("\nCompl tely weird matted in put \n"
+			"in put Compl tely weird matted \n"
+			"matted in put Compl tely weird \n"
+			"put Compl tely weird matted in \n"
+			"tely weird matted in put Compl \n"
+			"weird matted in put Compl tely \n", os.str());
 }
 
 void kwicTestTwoLine() {
@@ -98,7 +98,7 @@ void kwicTestTwoLine() {
 	std::stringstream os { };
 	printKwicVariations(is, os);
 
-	ASSERT_EQUAL("a test this is \n"
+	ASSERT_EQUAL("\na test this is \n"
 			"another test this is \n"
 			"is a test this \n"
 			"is another test this \n"
