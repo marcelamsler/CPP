@@ -56,6 +56,21 @@ void wordEqualityTest(){
 	ASSERT(w1 == w2);
 }
 
+void createVariationsTest() {
+	VariationCreator creator{};
+	std::vector<Word> lineVector{std::string{"b"},std::string{"c"},std::string{"d"}};
+	creator.createVariations(lineVector);
+	ASSERT_EQUAL(3, creator.variations.size());
+
+	std::vector<Word> secondVariation{std::string{"c"},std::string{"d"},std::string{"b"}};
+	std::vector<Word> thirdVariation{std::string{"d"},std::string{"b"},std::string{"c"}};
+
+	auto it = creator.variations.begin();
+	ASSERT_EQUAL(lineVector, *it++);
+	ASSERT_EQUAL(secondVariation, *it++);
+	ASSERT_EQUAL(thirdVariation, *it);
+}
+
 void kwicTestOneLine() {
 	std::stringstream is{};
 	std::stringstream os{};
@@ -89,17 +104,18 @@ void vectorPerLineInputOperatorTest() {
 	std::stringstream os{};
 	std::vector<std::vector<Word>> lineContainer{};
 
-
 	is << "this is\n a test\n this is\n another test";
+
 	while(is.good()) {
 		std::vector<Word> lineVector;
 		is >> lineVector;
 		lineContainer.push_back(lineVector);
 	}
 
-
-
+	ASSERT_EQUAL(4, lineContainer.size());
 }
+
+
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
@@ -109,8 +125,10 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(wordOutputOperatorTest));
 	s.push_back(CUTE(wordCompareTest1));
 	s.push_back(CUTE(wordEqualityTest));
+	s.push_back(CUTE(createVariationsTest));
 	s.push_back(CUTE(kwicTestOneLine));
 	s.push_back(CUTE(kwicTestTwoLine));
+	s.push_back(CUTE(vectorPerLineInputOperatorTest));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
