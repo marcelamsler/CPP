@@ -9,36 +9,36 @@
 #include <vector>
 #include <iterator>
 
-struct VariationCreator {
-	std::set<std::vector<Word>> variations { };
-	std::set<Word> currentLine;
+using WordVector = std::vector<Word>;
 
-	void operator()(std::vector<Word> line) {
+
+struct VariationCreator {
+
+	void operator()(WordVector const& line) {
 		createVariations(line);
 	}
+	std::set<WordVector> getVariations() const {return variations;};
 
-	void createVariations(std::vector<Word> line);
+	void createVariations(WordVector const& line);
 
 	void print(std::ostream &out) const;
 
-	void printLineSet(std::vector<Word> words, std::ostream &out) const;
+	void printLineSet(WordVector const &words, std::ostream &out) const;
+
+private:
+	std::set<WordVector> variations { };
 };
 
 void printKwicVariations(std::istream &in, std::ostream &out);
 
-inline std::istream& operator >>(std::istream &in, std::vector<Word> &lineSet) {
+inline std::istream& operator >>(std::istream &in, WordVector &lineSet) {
 
 	std::string line { };
 	std::getline(in, line);
+	std::istringstream input{line};
 
-	std::istringstream iss { };
-	iss.str(line);
+	lineSet = WordVector{std::istream_iterator<Word> {input}, std::istream_iterator<Word>{}};
 
-	while (!iss.eof()) {
-		Word w { };
-		iss >> w;
-		lineSet.push_back(w);
-	}
 	return in;
 }
 

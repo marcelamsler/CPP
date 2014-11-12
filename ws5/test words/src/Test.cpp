@@ -12,21 +12,25 @@ void wordInvariantTest() {
 	ASSERT_THROWS(Word w{" "}, std::out_of_range);
 }
 
+void emptyWordTest() {
+	ASSERT_THROWS(Word w{""}, std::out_of_range);
+}
+
 void wordInputOperatorTest1() {
 	Word w { "compl" };
 	std::stringstream is { "compl33tely ~ weird !!??!! 4matted in_put" };
 
-	Word readw { "" };
+	Word readw {};
 	is >> readw;
-	ASSERT_EQUAL(w.word, readw.word);
+	ASSERT_EQUAL(w.getWord(), readw.getWord());
 }
 
 void wordInputOperatorTest2() {
 	Word w { "tely" };
 	std::stringstream is { "33tely ~ weird !!??!! 4matted in_put" };
-	Word readw { "" };
+	Word readw {};
 	is >> readw;
-	ASSERT_EQUAL(w.word, readw.word);
+	ASSERT_EQUAL(w.getWord(), readw.getWord());
 }
 
 void wordOutputOperatorTest() {
@@ -49,25 +53,49 @@ void wordCompareTest1() {
 	ASSERT(w1 != w2);
 }
 
+void wordCompareCaseTest() {
+	Word w1 { "a" };
+	Word w2 { "B" };
+
+	ASSERT(w1 < w2);
+	ASSERT(w1 <= w2);
+	ASSERT(w2 > w1);
+	ASSERT(w2 >= w1);
+	ASSERT(w1 != w2);
+}
+
 void wordEqualityTest() {
 	Word w1 { "HelloWorld" };
-	Word w2 { "helloworlD" };
+	Word w2 { "hEllowOrld" };
 	ASSERT(w1 == w2);
+}
+
+void wordEOFTest() {
+	std::stringstream input { "I lose my word" };
+	std::vector<Word> inputWords { std::istream_iterator<Word> { input }, std::istream_iterator<Word> { } };
+	ASSERT_EQUAL(4, inputWords.size());
+}
+void readEmptyWord() {
+	std::stringstream input { "" };
+	Word w { };
+	input >> w;
+	ASSERT(!input);
+	ASSERT_EQUAL(Word { }, w);
+}
+void consecutiveReads() {
+	std::stringstream input { "one two" };
+	Word w { };
+	input >> w;
+	ASSERT_EQUAL(Word { "one" }, w);
+	input >> w;
+	ASSERT_EQUAL(Word { "two" }, w);
 }
 
 void createVariationsTest() {
 	VariationCreator creator { };
 	std::vector<Word> lineVector { std::string { "b" }, std::string { "c" }, std::string { "d" } };
 	creator.createVariations(lineVector);
-	ASSERT_EQUAL(3, creator.variations.size());
-
-	std::vector<Word> secondVariation { std::string { "c" }, std::string { "d" }, std::string { "b" } };
-	std::vector<Word> thirdVariation { std::string { "d" }, std::string { "b" }, std::string { "c" } };
-
-	auto it = creator.variations.begin();
-	ASSERT_EQUAL(lineVector, *it++);
-	ASSERT_EQUAL(secondVariation, *it++);
-	ASSERT_EQUAL(thirdVariation, *it);
+	ASSERT_EQUAL(3, creator.getVariations().size());
 }
 
 void kwicTestOneLine() {
@@ -133,11 +161,16 @@ void vectorPerLineInputOperatorTest() {
 void runAllTests(int argc, char const *argv[]) {
 	cute::suite s;
 	s.push_back(CUTE(wordInvariantTest));
+	s.push_back(CUTE(emptyWordTest));
 	s.push_back(CUTE(wordInputOperatorTest1));
 	s.push_back(CUTE(wordInputOperatorTest2));
 	s.push_back(CUTE(wordOutputOperatorTest));
 	s.push_back(CUTE(wordCompareTest1));
+	s.push_back(CUTE(wordCompareCaseTest));
 	s.push_back(CUTE(wordEqualityTest));
+	s.push_back(CUTE(wordEOFTest));
+	s.push_back(CUTE(readEmptyWord));
+	s.push_back(CUTE(consecutiveReads));
 	s.push_back(CUTE(createVariationsTest));
 	s.push_back(CUTE(kwicTestOneLine));
 	s.push_back(CUTE(kwicTestOneLineWithWeirdInput));
