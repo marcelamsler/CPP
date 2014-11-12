@@ -29,12 +29,21 @@ void expression3Test() {
 	ASSERT_EQUAL((x * x) % y, func(x, y));
 }
 
+void expression4Test() {
+	double x {42};
+	auto func = std::bind(static_cast<double(*)(double)>(&std::sqrt), std::bind(std::multiplies<double>{}, _1, _1));
+	ASSERT_EQUAL(std::fabs(x), func(x));
+}
+
+
+
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(sumTest));
 	s.push_back(CUTE(expression2Test));
 	s.push_back(CUTE(expression3Test));
+	s.push_back(CUTE(expression4Test));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
