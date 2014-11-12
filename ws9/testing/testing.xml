@@ -1,8 +1,9 @@
 <testsuites>
-	<testsuite name="AllTests" tests="4">
+	<testsuite name="AllTests" tests="5">
 		<testcase classname="AllTests" name="sumTest"/>
 		<testcase classname="AllTests" name="expression2Test"/>
 		<testcase classname="AllTests" name="expression3Test"/>
 		<testcase classname="AllTests" name="expression4Test"/>
+		<testcase classname="AllTests" name="expression5Test"/>
 	</testsuite>
 </testsuites>
