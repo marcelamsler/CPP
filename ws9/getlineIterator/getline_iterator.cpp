@@ -8,7 +8,7 @@ std::string getlineIterator::operator *() {
 	if (input)
 		std::getline(*input, value) ;
 
-	return value;
+ 	return value;
 
 }
 
