@@ -8,7 +8,9 @@ struct getlineIterator : boost::input_iterator_helper<getlineIterator, std::stri
 
 	getlineIterator() = default;
 
-	explicit getlineIterator(std::istream& in) : input(&in) {}
+	explicit getlineIterator(std::istream& in) : input(&in) {
+		std::getline(*input, firstline);
+	}
 
 	std::string operator *();
 
@@ -19,6 +21,7 @@ struct getlineIterator : boost::input_iterator_helper<getlineIterator, std::stri
 private:
 
 	std::istream *input { };
+	std::string firstline{};
 
 };
 

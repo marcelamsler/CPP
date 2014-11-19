@@ -16,9 +16,9 @@ void testMultipleLines() {
 void testEqualityEOF() {
 	ASSERT_EQUAL(getlineIterator{}, getlineIterator{});
 	std::istringstream emptyInput{""};
+	ASSERT_EQUAL(getlineIterator{emptyInput}, getlineIterator{});
 	std::vector<std::string> v {getlineIterator{emptyInput}, getlineIterator{}};
-	ASSERT_EQUAL(1, v.size());
-	//does not work with emptyInput, because design from lecture is used (Week 10, p.21/22). Please change this lecture slides.
+	ASSERT_EQUAL(0, v.size());
 }
 
 void testDereferencingAndOperators(){

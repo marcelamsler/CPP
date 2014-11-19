@@ -5,10 +5,16 @@ std::string getlineIterator::operator *() {
 
 	std::string value { };
 
-	if (input)
-		std::getline(*input, value) ;
+	if ((!firstline.empty()) && (input->good())) {
+		value = firstline;
+		firstline = {};
+		return value;
+	} else {
+		if (input)
+			std::getline(*input, value);
 
- 	return value;
+		return value;
+	}
 
 }
 
