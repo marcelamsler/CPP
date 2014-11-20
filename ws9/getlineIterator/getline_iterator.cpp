@@ -2,25 +2,31 @@
 #include <string>
 
 std::string getlineIterator::operator *() {
+	return currentLine;
+}
 
-	std::string value { };
+getlineIterator& getlineIterator::operator++() {
+	std::string tmpLine { };
+	std::getline(*input, tmpLine);
 
-	if ((!firstline.empty()) && (input->good())) {
-		value = firstline;
-		firstline = {};
-		return value;
-	} else {
-		if (input)
-			std::getline(*input, value);
-
-		return value;
+	while (tmpLine.empty() && input->good()) {
+		std::getline(*input, tmpLine);
 	}
 
+	if (!tmpLine.empty()) {
+		currentLine = tmpLine;
+
+		if (input->eof()) {
+			input->clear();
+		}
+	}
+
+	return *this;
 }
 
 bool getlineIterator::operator ==(const getlineIterator& other) const {
 
-	return (!input || !input->good()) && (!other.input || !other.input->good());
+	return (!input || input->eof()) && (!other.input || other.input->eof());
 
 }
 

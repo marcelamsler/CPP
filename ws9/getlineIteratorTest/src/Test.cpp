@@ -33,14 +33,7 @@ void testDereferencingAndOperators(){
 
 void testEmptyFirstLine() {
 	std::istringstream emptyLine {"\n"};
-	ASSERT_EQUAL(getlineIterator{emptyLine}, getlineIterator{});
-}
-
-void testEmptyMiddleLine() {
-	std::istringstream is {"bla bla\n\n blo blo"};
-	std::vector<std::string> v {getlineIterator{is}, getlineIterator{}};
-	ASSERT_EQUAL(2, v.size());
-	ASSERT_EQUAL(8, v.at(1).size());
+	ASSERT_NOT_EQUAL_TO(getlineIterator{emptyLine}, getlineIterator{});
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -49,7 +42,6 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testEqualityEOF));
 	s.push_back(CUTE(testDereferencingAndOperators));
 	s.push_back(CUTE(testEmptyFirstLine));
-	s.push_back(CUTE(testEmptyMiddleLine));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);

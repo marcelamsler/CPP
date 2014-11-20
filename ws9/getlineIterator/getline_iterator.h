@@ -9,19 +9,21 @@ struct getlineIterator : boost::input_iterator_helper<getlineIterator, std::stri
 	getlineIterator() = default;
 
 	explicit getlineIterator(std::istream& in) : input(&in) {
-		std::getline(*input, firstline);
+		while(currentLine.empty()&& input->good()){
+			std::getline(*input, currentLine);
+		}
 	}
 
 	std::string operator *();
 
-	getlineIterator& operator++() { return *this; }
+	getlineIterator& operator++();
 
 	bool operator ==(const getlineIterator& other) const;
 
 private:
 
 	std::istream *input { };
-	std::string firstline{};
+	std::string currentLine{};
 
 };
 
