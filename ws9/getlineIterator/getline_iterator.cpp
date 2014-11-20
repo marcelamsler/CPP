@@ -6,20 +6,10 @@ std::string getlineIterator::operator *() {
 }
 
 getlineIterator& getlineIterator::operator++() {
-	std::string tmpLine { };
-	std::getline(*input, tmpLine);
+	std::getline(*input, currentLine);
 
-	while (tmpLine.empty() && input->good()) {
-		std::getline(*input, tmpLine);
-	}
-
-	if (!tmpLine.empty()) {
-		currentLine = tmpLine;
-
-		if (input->eof()) {
-			input->clear();
-		}
-	}
+	if (input->eof() && !currentLine.empty())
+		input->clear();
 
 	return *this;
 }

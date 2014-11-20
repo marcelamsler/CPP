@@ -9,9 +9,7 @@ struct getlineIterator : boost::input_iterator_helper<getlineIterator, std::stri
 	getlineIterator() = default;
 
 	explicit getlineIterator(std::istream& in) : input(&in) {
-		while(currentLine.empty()&& input->good()){
 			std::getline(*input, currentLine);
-		}
 	}
 
 	std::string operator *();
