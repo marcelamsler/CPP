@@ -19,9 +19,9 @@ public:
 
 	T at(int index) {
 		if (index < 0)
-			vec.at(vec.size() + index);
+			return vec.at(vec.size() + index);
 		else
-			vec.at(index);
+			return vec.at(index);
 	}
 
 	size_type size() const{
