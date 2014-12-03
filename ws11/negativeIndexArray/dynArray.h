@@ -17,7 +17,7 @@ public:
 	template <typename ITER>
 	dynArray(ITER begin, ITER end) : vec(begin, end){}
 
-	T at(int index) {
+	T& at(int index) {
 		if (index < 0)
 			return vec.at(vec.size() + index);
 		else
@@ -28,7 +28,16 @@ public:
 		return vec.size();
 	}
 
+	T& operator[](int index) {
+		return at(index);
+	}
+
 };
+
+template <typename T>
+inline dynArray<T> makeDynArray(std::initializer_list<T> list) {
+	return dynArray<T> {list};
+}
 
 
 

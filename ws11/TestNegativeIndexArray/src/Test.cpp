@@ -36,15 +36,24 @@ void testCountAndValueConstructorWithTwoInts() {
 void testNormalIndexAccess(){
 	dynArray<int> a{1,2,3,4,5};
 	ASSERT_EQUAL(1, a.at(0));
+	ASSERT_EQUAL(1, a[0]);
 	ASSERT_EQUAL(5, a.at(4));
+	ASSERT_EQUAL(5, a[4]);
 }
 
 void testNegativeIndexAccess(){
 	dynArray<int> a{1,2,3,4,5};
 	ASSERT_EQUAL(5, a.at(-1));
+	ASSERT_EQUAL(5, a[-1]);
 	ASSERT_EQUAL(1, a.at(-5));
+	ASSERT_EQUAL(1, a[-5]);
+
 }
 
+void testFactoryMethodForInitializerList() {
+	auto a = makeDynArray({"42", "is", "the", "answer"});
+	ASSERT_EQUAL(4, a.size());
+}
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
@@ -55,6 +64,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testCountAndValueConstructorWithTwoInts));
 	s.push_back(CUTE(testNormalIndexAccess));
 	s.push_back(CUTE(testNegativeIndexAccess));
+	s.push_back(CUTE(testFactoryMethodForInitializerList));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
