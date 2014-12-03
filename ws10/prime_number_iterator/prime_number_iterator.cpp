@@ -1,3 +1,5 @@
+#include "prime_number_iterator.h"
+
 bool prime_number_iterator::is_prime(unsigned n) {
 	if (n <= 3) {
 		return n > 1;
@@ -14,6 +16,7 @@ bool prime_number_iterator::is_prime(unsigned n) {
 }
 
 unsigned prime_number_iterator::next_prime(unsigned x) {
-	while(!is_prime())
-		return x;
+	while(!is_prime(++x)) {}
+
+	return x;
 }

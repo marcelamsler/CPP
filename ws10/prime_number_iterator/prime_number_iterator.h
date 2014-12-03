@@ -8,22 +8,30 @@ struct prime_number_iterator : boost::input_iterator_helper<prime_number_iterato
 
 	prime_number_iterator() = default;
 
-	explicit prime_number_iterator(int countLimit) : countLimit(countLimit){}
+	explicit prime_number_iterator(unsigned numberOfPrimes) :
+			numberOfPrimes { numberOfPrimes }
+	{
+		currentPrime = next_prime(currentPrime);
+	}
 
 	bool operator == (prime_number_iterator const &otherIterator) const{
-		return countLimit == 0 && otherIterator.countLimit == countLimit;
+		return numberOfPrimes == 0 && otherIterator.numberOfPrimes == numberOfPrimes;
 	}
 
 	unsigned operator *() const{
-
+		return currentPrime;
 	}
 
 	void operator ++ () {
-		countLimit++;
+		numberOfPrimes--;
+		currentPrime = next_prime(currentPrime);
 	}
 
 private:
-	unsigned countLimit {};
+	unsigned numberOfPrimes {};
+	unsigned currentPrime{};
+	unsigned next_prime(unsigned x);
+	bool is_prime(unsigned n);
 
 };
 
