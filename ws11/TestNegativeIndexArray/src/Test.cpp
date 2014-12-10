@@ -47,12 +47,28 @@ void testNegativeIndexAccess(){
 	ASSERT_EQUAL(5, a[-1]);
 	ASSERT_EQUAL(1, a.at(-5));
 	ASSERT_EQUAL(1, a[-5]);
+}
 
+void testFrontAndBack() {
+	dynArray<char> a {'g', 'b', 'c'};
+	ASSERT_EQUAL('g', a.front());
+	ASSERT_EQUAL('c', a.back());
 }
 
 void testFactoryMethodForInitializerList() {
 	auto a = makeDynArray({"42", "is", "the", "answer"});
 	ASSERT_EQUAL(4, a.size());
+}
+
+void testIterators() {
+	dynArray<std::string> a {"a", "b", "c", "d"};
+	ASSERT_EQUAL("b", *(++a.begin()));
+	ASSERT_EQUAL("a", *(a.cbegin()));
+	ASSERT_EQUAL("c", *(++a.crbegin()));
+
+	ASSERT_EQUAL("d", *(--a.end()));
+	ASSERT_EQUAL("d", *(--a.cend()));
+	ASSERT_EQUAL("a", *(--a.crend()));
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -64,7 +80,9 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testCountAndValueConstructorWithTwoInts));
 	s.push_back(CUTE(testNormalIndexAccess));
 	s.push_back(CUTE(testNegativeIndexAccess));
+	s.push_back(CUTE(testFrontAndBack));
 	s.push_back(CUTE(testFactoryMethodForInitializerList));
+	s.push_back(CUTE(testIterators));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);

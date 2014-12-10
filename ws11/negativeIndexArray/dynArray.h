@@ -11,7 +11,7 @@ class dynArray {
 	using iterator = typename VectorType::iterator;
 	using const_iterator = typename VectorType::const_iterator;
 	using reverse_iterator = typename VectorType::reverse_iterator;
-	using reverse_const_iterator = typename VectorType::const_reverse_iterator;
+	using const_reverse_iterator = typename VectorType::const_reverse_iterator;
 	VectorType vec{};
 
 public:
@@ -29,6 +29,13 @@ public:
 			return vec.at(index);
 	}
 
+	T& at(int index) const {
+			if (index < 0)
+				return vec.at(vec.size() + index);
+			else
+				return vec.at(index);
+	}
+
 	size_type size() const{
 		return vec.size();
 	}
@@ -37,13 +44,25 @@ public:
 		return at(index);
 	}
 
+	T& operator[](int index) const{
+		return at(index);
+	}
+
+	T& front () {
+		return at(0);
+	}
+
+	T& back () {
+		return at(size()-1);
+	}
+
 	//iterator-functions
 
 	iterator begin () {
 		return vec.begin();
 	}
 
-	const_iterator cbegin(){
+	const_iterator cbegin() const{
 		return vec.cbegin();
 	}
 
@@ -51,7 +70,7 @@ public:
 			return vec.end();
 	}
 
-	const_iterator cend(){
+	const_iterator cend() const{
 			return vec.cend();
 	}
 
@@ -59,7 +78,7 @@ public:
 		return vec.rbegin();
 	}
 
-	const_iterator crbegin(){
+	const_reverse_iterator crbegin() const{
 		return vec.crbegin();
 	}
 
@@ -67,9 +86,11 @@ public:
 			return vec.rend();
 	}
 
-	const_iterator crend(){
+	const_reverse_iterator crend() const{
 			return vec.crend();
 	}
+
+
 
 
 
