@@ -83,6 +83,47 @@ void testCapacity () {
 	ASSERT_EQUAL(5, a.capacity());
 }
 
+void testClear() {
+	dynArray<int> a {1,2,3,4,5};
+	a.clear();
+	ASSERT_EQUAL(true, a.empty());
+}
+
+void testErase() {
+	dynArray<int> a {1,2,3,4,5};
+	auto begin= a.begin();
+	begin++;
+	a.erase(begin, a.end());
+	ASSERT_EQUAL(1, a.size());
+	a.erase(a.begin());
+	ASSERT_EQUAL(0, a.size());
+}
+
+void testPushBack() {
+	dynArray<int> a {};
+	a.push_back(25);
+	ASSERT_EQUAL(false, a.empty());
+	ASSERT_EQUAL(25, a.front());
+}
+
+void testPopBack() {
+	dynArray<std::string> a {"bla", "bli"};
+	a.pop_back();
+	ASSERT_EQUAL(1, a.size());
+	ASSERT_EQUAL("bla", a[0]);
+}
+
+void testResize() {
+	dynArray<int> a {1,2,3,4,5,6};
+	a.resize(10);
+	ASSERT_EQUAL(10, a.size());
+	a.resize(15, 55);
+	ASSERT_EQUAL(15, a.size());
+	ASSERT_EQUAL(55, a.at(14));
+	a.resize(5);
+	ASSERT_EQUAL(5, a.size());
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(testDefaultConstructor));
@@ -97,6 +138,12 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testIterators));
 	s.push_back(CUTE(testEmpty));
 	s.push_back(CUTE(testCapacity));
+	s.push_back(CUTE(testClear));
+	s.push_back(CUTE(testErase));
+	s.push_back(CUTE(testPushBack));
+	s.push_back(CUTE(testPopBack));
+	s.push_back(CUTE(testResize));
+
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);

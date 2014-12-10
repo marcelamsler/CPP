@@ -1,5 +1,5 @@
 <testsuites>
-	<testsuite name="AllTests" tests="12">
+	<testsuite name="AllTests" tests="17">
 		<testcase classname="AllTests" name="testDefaultConstructor"/>
 		<testcase classname="AllTests" name="testInitializerListConstructor"/>
 		<testcase classname="AllTests" name="testCountAndValueConstructor"/>
@@ -12,5 +12,10 @@
 		<testcase classname="AllTests" name="testIterators"/>
 		<testcase classname="AllTests" name="testEmpty"/>
 		<testcase classname="AllTests" name="testCapacity"/>
+		<testcase classname="AllTests" name="testClear"/>
+		<testcase classname="AllTests" name="testErase"/>
+		<testcase classname="AllTests" name="testPushBack"/>
+		<testcase classname="AllTests" name="testPopBack"/>
+		<testcase classname="AllTests" name="testResize"/>
 	</testsuite>
 </testsuites>

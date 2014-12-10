@@ -104,13 +104,35 @@ public:
 		return vec.capacity();
 	}
 
+	//Modifiers
 
+	void clear() {
+		vec.clear();
+	}
 
+	iterator erase (const_iterator pos) {
+		return vec.erase(pos);
+	}
 
+	iterator erase (const_iterator first, const_iterator last) {
+		return vec.erase(first, last);
+	}
 
+	void push_back(T element) {
+		vec.push_back(element);
+	}
 
+	void pop_back () {
+		vec.pop_back();
+	}
 
+	void resize (size_type newSize) {
+		vec.resize(newSize);
+	}
 
+	void resize (size_type newSize, const T& value) {
+			vec.resize(newSize, value);
+	}
 
 };
 
