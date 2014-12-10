@@ -71,6 +71,18 @@ void testIterators() {
 	ASSERT_EQUAL("a", *(--a.crend()));
 }
 
+void testEmpty() {
+	dynArray<int> emptyA {};
+	ASSERT_EQUAL(true, emptyA.empty());
+	dynArray<int> notEmptyA {1};
+	ASSERT_EQUAL(false, notEmptyA.empty());
+}
+
+void testCapacity () {
+	dynArray<int> a {1,2,3,4,5};
+	ASSERT_EQUAL(5, a.capacity());
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 	s.push_back(CUTE(testDefaultConstructor));
@@ -83,6 +95,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(testFrontAndBack));
 	s.push_back(CUTE(testFactoryMethodForInitializerList));
 	s.push_back(CUTE(testIterators));
+	s.push_back(CUTE(testEmpty));
+	s.push_back(CUTE(testCapacity));
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);

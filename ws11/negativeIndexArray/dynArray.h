@@ -15,12 +15,16 @@ class dynArray {
 	VectorType vec{};
 
 public:
+
+	//Constructors
 	dynArray() = default;
 	dynArray(std::initializer_list<T> list) : vec(list){}
 	dynArray(unsigned count, T value): vec(count, value){}
 
 	template <typename ITER>
 	dynArray(ITER begin, ITER end) : vec(begin, end){}
+
+	//Element Access
 
 	T& at(int index) {
 		if (index < 0)
@@ -34,10 +38,6 @@ public:
 				return vec.at(vec.size() + index);
 			else
 				return vec.at(index);
-	}
-
-	size_type size() const{
-		return vec.size();
 	}
 
 	T& operator[](int index) {
@@ -88,6 +88,20 @@ public:
 
 	const_reverse_iterator crend() const{
 			return vec.crend();
+	}
+
+	//Capacity
+
+	bool empty() const {
+		return vec.empty();
+	}
+
+	size_type size() const{
+		return vec.size();
+	}
+
+	size_type capacity() const {
+		return vec.capacity();
 	}
 
 
